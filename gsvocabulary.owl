@@ -1,0 +1,978 @@
+@prefix : <http://purl.org/aiaontology/gsvocabulary> .
+@prefix aia: <http://purl.org/aiaontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://purl.org/aiaontology/gsvocabulary> .
+
+<http://purl.org/aiaontology/gsvocabulary> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#equivalentProperty
+owl:equivalentProperty rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#sameAs
+owl:sameAs rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#related
+<http://www.w3.org/2004/02/skos/core#related> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://purl.org/aiaontology/gsvocabulary#Gt
+:Gt rdf:type rdfs:Datatype ;
+    rdfs:comment "Giga-Tonne"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#MWel
+:MWel rdf:type rdfs:Datatype ;
+      rdfs:comment "Mega-Watt Electrical"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#MWh
+:MWh rdf:type rdfs:Datatype ;
+     rdfs:comment "Mega-Watt per hour"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#MWth
+:MWth rdf:type rdfs:Datatype ;
+      rdfs:comment "Mega-Watt Thermal"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#kW
+:kW rdf:type rdfs:Datatype ;
+    rdfs:comment "Kilo-Watt"@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/aiaontology/gsvocabulary#CPAhasPDD
+:CPAhasPDD rdf:type owl:ObjectProperty ;
+           rdfs:domain :CPA ;
+           rdfs:range :PDD .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#auditorInTeam
+:auditorInTeam rdf:type owl:ObjectProperty ;
+               rdfs:domain aia:Auditor ;
+               rdfs:range :AuditTeam .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#disputeWith
+:disputeWith rdf:type owl:ObjectProperty ;
+             rdfs:domain :AssuranceProvider ;
+             rdfs:range aia:Agent .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#disputesClaim
+:disputesClaim rdf:type owl:ObjectProperty ;
+               rdfs:domain aia:Claim ;
+               rdfs:range aia:Claim .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#fulfillsRequirement
+:fulfillsRequirement rdf:type owl:ObjectProperty ;
+                     rdfs:domain aia:Activity ;
+                     rdfs:range aia:Condition ;
+                     rdfs:comment "An Activity that fulfills some Requirement/Condition is defined as a Conformity. This is the criteria for an Activity to be considered a Conformity."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#givenInFeedbackRound
+:givenInFeedbackRound rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Feedback ;
+                      rdfs:range :SFR .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#givesFeedback
+:givesFeedback rdf:type owl:ObjectProperty ;
+               rdfs:domain :Relevant_Stakeholders ;
+               rdfs:range :Feedback .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#hasDesignCertification
+:hasDesignCertification rdf:type owl:ObjectProperty ;
+                        rdfs:domain aia:Activity ;
+                        rdfs:range :Design_Certification .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#hasPerformanceCertification
+:hasPerformanceCertification rdf:type owl:ObjectProperty ;
+                             rdfs:domain aia:Activity ;
+                             rdfs:range :Certification .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#hasProjectArea
+:hasProjectArea rdf:type owl:ObjectProperty ;
+                rdfs:domain aia:Activity ;
+                rdfs:range aia:Location .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#hasProjectBoundary
+:hasProjectBoundary rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Project_Area ;
+                    rdfs:range :Project_Boundary .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#influenceReputation
+:influenceReputation rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Complaints ;
+                     rdfs:range aia:Reputation .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#usedToSupport
+:usedToSupport rdf:type owl:ObjectProperty ;
+               rdfs:domain :KPI ;
+               rdfs:range :EligibilityCheck .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/aiaontology#hasUnitOfMeasure
+aia:hasUnitOfMeasure rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#equivalentTo
+:equivalentTo rdf:type owl:DatatypeProperty ;
+              rdfs:comment "Used to indicate aggregated or equivalent units of measurement."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#hasImplementationDate
+:hasImplementationDate rdf:type owl:DatatypeProperty ;
+                       rdfs:domain aia:Activity ;
+                       rdfs:range xsd:dateTime ;
+                       owl:equivalentProperty <http://www.w3.org/ns/prov#startedAtTime> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#isCompotent
+:isCompotent rdf:type owl:DatatypeProperty ;
+             rdfs:domain aia:Agent ;
+             rdfs:range xsd:boolean ;
+             rdfs:comment "FIX: possibly use reification to make a statement (a Claim) about this statement"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/aiaontology#Activity
+aia:Activity rdf:type owl:Class ;
+             owl:disjointWith :Non-Conformity .
+
+
+###  http://purl.org/aiaontology#Agent
+aia:Agent rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Audit
+aia:Audit rdf:type owl:Class ;
+          rdfs:subClassOf aia:Activity .
+
+
+###  http://purl.org/aiaontology#Auditor
+aia:Auditor rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty :isCompotent ;
+                                  owl:allValuesFrom xsd:boolean
+                                ] ;
+            rdfs:subClassOf aia:Role ;
+            rdfs:comment "Person who carries out the audit"@en ;
+            rdfs:label "FIX condition so that the value for isCompotent can be only TRUE"@en .
+
+
+###  http://purl.org/aiaontology#Claim
+aia:Claim rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Condition
+aia:Condition rdf:type owl:Class ;
+              owl:equivalentClass :Requirements .
+
+
+###  http://purl.org/aiaontology#Control
+aia:Control rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Indicator
+aia:Indicator rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#LegalPerson
+aia:LegalPerson rdf:type owl:Class ;
+                rdfs:subClassOf aia:Agent .
+
+
+###  http://purl.org/aiaontology#Location
+aia:Location rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Objective
+aia:Objective rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Output
+aia:Output rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Parameter
+aia:Parameter rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Period
+aia:Period rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Procedure
+aia:Procedure rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Process
+aia:Process rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Report
+aia:Report rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Reputation
+aia:Reputation rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Requirement
+aia:Requirement rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Resource
+aia:Resource rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Role
+aia:Role rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#State
+aia:State rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Affected_Stakeholder
+:Affected_Stakeholder rdf:type owl:Class ;
+                      rdfs:subClassOf :Relevant_Stakeholders ;
+                      rdfs:comment "Any stakeholder affected physically, socially or economically by the implementation of the Project. Note that affected stakeholders may be outside the Project Area and in some cases be a distance beyond the Project Boundary."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#American_National_Standards_Institute
+:American_National_Standards_Institute rdf:type owl:Class ;
+                                       rdfs:subClassOf aia:LegalPerson ;
+                                       rdfs:comment <https://www.ansica.org> ;
+                                       rdfs:label "American National Standards Institute"@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "ANSI"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Annual_Report
+:Annual_Report rdf:type owl:Class ;
+               rdfs:subClassOf aia:Report ;
+               rdfs:comment "An annual update submitted by the Project Developer. Report covers updates and actions taken on the Project during a given year."@en ,
+                            "FIX: depending on updates to aia, this may need to be a subclass of Claim instead"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Assessment
+:Assessment rdf:type owl:Class ;
+            rdfs:subClassOf aia:Audit ;
+            rdfs:comment "The combined process of audit, review and decision on a conformity within the requirements of a standard (part of Validation or Verification e.g. a Validation Assessment)."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Assurance
+:Assurance rdf:type owl:Class ;
+           rdfs:subClassOf aia:Claim ;
+           rdfs:comment "Demonstrable evidence that specified requirements related to an activity are fulfilled."@en ;
+           <http://www.w3.org/2004/02/skos/core#related> <http://purl.org/aiaontology/vcsvocabulary#Proof> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#AssuranceProvider
+:AssuranceProvider rdf:type owl:Class ;
+                   rdfs:subClassOf aia:Role .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#AuditTeam
+:AuditTeam rdf:type owl:Class ;
+           rdfs:subClassOf aia:Agent ;
+           rdfs:comment "One or more auditors conducting an assessment. An audit team may consist of only one person; in such cases, the person is expected to have all team competences and team leader competences."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Averted_Disability_Adjusted_Life_Year
+:Averted_Disability_Adjusted_Life_Year rdf:type owl:Class ;
+                                       rdfs:subClassOf aia:Parameter ;
+                                       rdfs:comment "A measure of mortality and morbidity used to demonstrate project impact on SDG 3.  The quantification and certification of ADALYs is undertaken via the use of a GS-Methodology."@en ;
+                                       <http://www.w3.org/2004/02/skos/core#altLabel> "ADALY"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Baseline_Scenario
+:Baseline_Scenario rdf:type owl:Class ;
+                   rdfs:subClassOf aia:State ;
+                   rdfs:comment "The Baseline Scenario is defined as the reasonable, conservative scenario that would exist in the absence of the project. While setting the Baseline Scenario the Project Developer shall take into account the relevant applicable legislation and how effectively these are enforced."@en ;
+                   owl:equivalentClass <http://purl.org/aiaontology/cdmvocabulary#BaselineScenario> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#CAR
+:CAR rdf:type owl:Class ;
+     rdfs:subClassOf aia:Condition ;
+     rdfs:comment "With a CAR, the GS-VVB or The Gold Standard requests appropriate action be taken to show conformity with a requirement. In order to achieve a successful certification, all CARs shall be formally closed."@en ;
+     rdfs:label "Corrective Action Request"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#CDM
+:CDM rdf:type owl:Class ;
+     rdfs:subClassOf aia:Control ;
+     rdfs:comment "Standard for the issues of CERs, operated by the UNFCCC."@en ;
+     rdfs:label "Clean Development Mechanism"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#CDM_Executive_Board
+:CDM_Executive_Board rdf:type owl:Class ;
+                     rdfs:subClassOf aia:LegalPerson ;
+                     rdfs:comment "Executive Board of the Clean Development Mechanism."@en ;
+                     <http://www.w3.org/2004/02/skos/core#altLabel> "EB"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#CME
+:CME rdf:type owl:Class ;
+     rdfs:subClassOf aia:Agent ;
+     rdfs:comment "Entity that communicates with the Gold Standard on all matters related to a PoA and associated activities, as nominated in the cover letters to be submitted for each one of the activities."@en ;
+     rdfs:label "Coordinating and Managing Entity"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#CPA
+:CPA rdf:type owl:Class ;
+     rdfs:subClassOf aia:Activity ;
+     rdfs:comment "A CDM project activity under a programme of activities. A CPA is a single, or a set of interrelated measure(s), to reduce GHG emissions or result in net anthropogenic greenhouse gas removals by sinks, applied within a designated area defined in the baseline methodology."@en ;
+     rdfs:label "CDM Project Activity"@en ;
+     owl:equivalentClass <http://purl.org/aiaontology/cdmvocabulary#CPA> ;
+     <http://www.w3.org/2004/02/skos/core#altLabel> "CPA"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#CSA
+:CSA rdf:type owl:Class ;
+     rdfs:subClassOf aia:Activity ;
+     rdfs:comment "A Project type that entails provision of services to a community.  The Requirements for CSA are included in the Gold Standard Community Services Activity Requirements."@en ;
+     rdfs:label "Community Service Activity"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Certification
+:Certification rdf:type owl:Class ;
+               rdfs:subClassOf aia:Claim ;
+               rdfs:comment "FIX: possible syntax: Certification used as proof in aia:Audit, which is used to verify a Claim"@en ,
+                            "The written assurance confirmation/communication that fulfilment of specified requirements has been demonstrated (Adapted from ISO 17000)."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#CertifiedEmissionsReduction
+:CertifiedEmissionsReduction rdf:type owl:Class ;
+                             rdfs:subClassOf aia:Claim ;
+                             rdfs:comment "A carbon credit is a specific aia:Claim, namely, the claim to be responsible for the environmental benefit equal to one carbon credit."@en ,
+                                          "Certified Emissions Reduction: a carbon credit, issued by another third party standard (typically UNFCCC CDM) for use in the compliance carbon markets.  A Gold Standard labelled CER is known as a GS-CER."@en ;
+                             <http://www.w3.org/2004/02/skos/core#altLabel> "CES"@en ,
+                                                                            "GS-CER"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Competence
+:Competence rdf:type owl:Class ;
+            rdfs:subClassOf aia:Condition ;
+            rdfs:comment "Ability to apply knowledge and skills in Gold Standard audit with a view to achieving intended results."@en ;
+            rdfs:label "FIX: Condition: to be an Auditor, an Agent needs Competence. A Claim will need to be made (and verified!) as to their Competence."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Complaints
+:Complaints rdf:type owl:Class ;
+            rdfs:subClassOf aia:Claim ;
+            rdfs:comment "Formal (written) and/or informal (verbal) expressions of dissatisfaction regarding the performance of an assurance provider in relation to its Gold Standard function(s), from any source, such as the client, the general public or its representatives, government bodies, NGOs, etc."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Conformity
+:Conformity rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty :fulfillsRequirement ;
+                                  owl:someValuesFrom aia:Condition
+                                ] ;
+            rdfs:subClassOf aia:Activity ;
+            rdfs:comment "Conformity is defined as the fulfillment of a requirement."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Conformity_Criteria
+:Conformity_Criteria rdf:type owl:Class ;
+                     rdfs:subClassOf aia:Condition ;
+                     rdfs:comment "A checklist and associated guidance for GS-VVBs for the Validation or Verification against Gold Standard for the Global Goals."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Customary_Rights
+:Customary_Rights rdf:type owl:Class ;
+                  rdfs:subClassOf aia:Control ;
+                  rdfs:comment "Customary rights are those that result from a long series of habitual or customary actions, constantly repeated, which have, by such repetition and by uninterrupted acquiescence, acquired the force of a law within a geographical or sociological unit."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#DNA
+:DNA rdf:type owl:Class ;
+     rdfs:subClassOf aia:LegalPerson ;
+     rdfs:comment "A designated national authority (DNA) is the organization granted responsibility by a Party to authorise and approve participation in CDM projects."@en ;
+     rdfs:label "Designated National Authority"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#DOE
+:DOE rdf:type owl:Class ;
+     rdfs:subClassOf :VVB ;
+     rdfs:comment "A type of VVB that is eligible to apply for GS-VVB status.  DOE is the term used by the UNFCCC for VVBs that are accredited to Validate and Verify CDM Projects."@en ;
+     rdfs:label "Designated Operational Entity"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Design_Certification
+:Design_Certification rdf:type owl:Class ;
+                      rdfs:subClassOf aia:Control ;
+                      rdfs:comment "Project Design Certification is a key milestone in the Project Cycle. It marks the point a Project has undertaken Validation, a VVB has submitted a positive opinion and the Gold Standard Project Design Review is complete. Only Certified Project Design status Projects may proceed to Verification/Performance Certification (see also Retro-active Registration/merging Project Design Certification and Performance Certification)."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Disputes
+:Disputes rdf:type owl:Class ;
+          rdfs:subClassOf aia:Claim ;
+          rdfs:comment "Disagreement between an assurance provider and the client regarding the assurance provider’s recommendation and/or opinions/decisions made at various stages during the audit."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#ESIA
+:ESIA rdf:type owl:Class ;
+      rdfs:subClassOf aia:Control ;
+      rdfs:label "Environmental and Social Impact Assessment"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#EU
+:EU rdf:type owl:Class ;
+    rdfs:subClassOf aia:LegalPerson ;
+    rdfs:label "The European Union"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#EligibilityCheck
+:EligibilityCheck rdf:type owl:Class ;
+                  rdfs:subClassOf aia:Activity .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Eligibility_Principles
+:Eligibility_Principles rdf:type owl:Class ;
+                        rdfs:subClassOf aia:Objective ;
+                        rdfs:comment "The overarching rationale and purpose for the Requirements as related to achieving the Gold Standard Vision and Mission."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#European_Union
+:European_Union rdf:type owl:Class ;
+                rdfs:subClassOf aia:LegalPerson ;
+                rdfs:comment "The European Union."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Expert_Stakeholder
+:Expert_Stakeholder rdf:type owl:Class ;
+                    rdfs:subClassOf :Relevant_Stakeholders ;
+                    rdfs:comment "Expert Stakeholders are individuals that hold specific expertise or knowledge about the organization, process, or activity being audited and/or about the context and practices to which the project is applied. For the purposes of this Standard a Stakeholder is considered an expert if they hold over 10 years of relevant, contextually specific professional, academic or practical experience in a given topic. Higher academic qualifications are preferred but can be justified as not required if necessary."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#FAR
+:FAR rdf:type owl:Class ;
+     rdfs:subClassOf aia:Condition ;
+     rdfs:comment "Forward Action Request: A VVB or The Gold Standard Secretariat requests appropriate action be taken in the project to become fully compliant with a requirement. FARs are not raised for issues that are linked to the eligibility of a project under the WBC scheme, such as a financial needs assessment. A FAR will be issued where the impact of the infraction is: not material within the current certification, AND unusual or non-systematic, AND correctable in a specific timeframe of less than 1 year. FARs can be closed by The Gold Standard Secretariat or a GS-VVB."@en ;
+     rdfs:label "Forward Action Request"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Feedback
+:Feedback rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#GHG
+:GHG rdf:type owl:Class ;
+     rdfs:subClassOf aia:Resource ;
+     rdfs:comment "A gas that absorbs and emits radiation within the thermal infrared range. This process is the fundamental cause of the greenhouse effect. The primary greenhouse gases in Earth’s atmosphere are water vapor, carbon dioxide, methane, nitrous oxide, and ozone."@en ;
+     rdfs:label "GreenhouseGas"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#GMO
+:GMO rdf:type owl:Class ;
+     rdfs:comment "(Source: FSC) An organism in which the genetic material has been altered in a way that does not occur naturally by mating and/or natural recombination. See ‘FSC Interpretation on GMO – FSC-POL-30-602’"@en ;
+     rdfs:label "Genetically Modified Organism"@en ;
+     rdfs:seeAlso <https://ic.fsc.org/policies.338.htm> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#GS-Methodology
+:GS-Methodology rdf:type owl:Class ;
+                rdfs:subClassOf aia:Procedure ;
+                rdfs:comment "The specific Activity/Outcome requirements and procedures used to calculate, monitor and report on a given Outcome that may lead to the issuance of Gold Standard Certified SDG Impact Statements or Products."@en ;
+                rdfs:label "Gold Standard Approved Methodology"@en ;
+                <http://www.w3.org/2004/02/skos/core#related> <http://purl.org/aiaontology/cdmvocabulary#approvedMethodology> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#GS-SDGTool
+:GS-SDGTool rdf:type owl:Class ;
+            rdfs:subClassOf aia:Procedure ;
+            rdfs:comment "An approved Tool that can be used to demonstrate one or more positive SDG Impacts. They cannot be used for the Issuance of GS Certified SDG Impact Statements or Products."@en ;
+            rdfs:label "Gold Standard Approved SDG Tool"@en ;
+            <http://www.w3.org/2004/02/skos/core#related> <http://purl.org/aiaontology/cdmvocabulary#MethodologicalTool> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Global_Protocol_for_Communities
+:Global_Protocol_for_Communities rdf:type owl:Class ;
+                                 rdfs:subClassOf aia:Procedure ;
+                                 rdfs:seeAlso <https://ghgprotocol.org/greenhouse-gas-protocol-accounting-reporting-standard-cities> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Gold_Standard_Accreditation_Approval
+:Gold_Standard_Accreditation_Approval rdf:type owl:Class ;
+                                      rdfs:subClassOf aia:Claim ;
+                                      rdfs:comment "Formal recognition an VVB’s institutional capacity and competence to be eligible to carry out the GS audit in accordance with the standard requirements."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Gold_Standard_Certified_Products
+:Gold_Standard_Certified_Products rdf:type owl:Class ;
+                                  rdfs:subClassOf :Gold_Standard_Certified_SDG_Impacts ;
+                                  rdfs:comment "Products are a type of Gold Standard Certified SDG Impact that are issued by Gold Standard upon the successful Performance Certification under a given GS Approved Methodology and Product Requirements. Examples include GS VERs and CER Labels."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Gold_Standard_Certified_Project
+:Gold_Standard_Certified_Project rdf:type owl:Class ;
+                                 rdfs:subClassOf aia:Activity ;
+                                 rdfs:comment "A Project that has successfully completed Design Certification and completed at least one Performance Certification successfully."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Gold_Standard_Certified_SDG_Impact_Statement
+:Gold_Standard_Certified_SDG_Impact_Statement rdf:type owl:Class ;
+                                              rdfs:subClassOf :Gold_Standard_Certified_SDG_Impacts ;
+                                              rdfs:comment "A Certified Statement issued by Gold Standard upon the successful certification under a given GS Approved Methodology. These may come in a number of forms.   Gold Standard recognises that typically the monitoring parameters included in GS-Approved Methodologies relate to Outcomes rather than Impacts. The use of the term Impact Statement reflects that these Outcomes may be used as a way of communicating the progress towards the impact sought and is typical of impact investment approaches."@en ,
+                                                           "A aia:Claim regarding an aia:Agent aia:ImpactClaim, i.e. a verification claim"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Gold_Standard_Certified_SDG_Impacts
+:Gold_Standard_Certified_SDG_Impacts rdf:type owl:Class ;
+                                     rdfs:subClassOf aia:Claim ;
+                                     rdfs:comment "Gold Standard Certified SDG Impacts are achieved by following GS-Approved Methodologies and successfully undergoing Performance Certification. They may be in the form of Gold Standard Certified Products or SDG Impact Statements, issued upon successful completion of Performance Certification."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Gold_Standard_Foundation
+:Gold_Standard_Foundation rdf:type owl:Class ;
+                          rdfs:subClassOf aia:LegalPerson ;
+                          rdfs:comment "The owner and operator of Gold Standard for the Global Goals. Gold Standard is a Swiss-based non-profit whose Vision focuses on Climate Security and Sustainable Development for all. https://www.goldstandard.org"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Gold_Standard_Label
+:Gold_Standard_Label rdf:type owl:Class ;
+                     rdfs:subClassOf :Gold_Standard_Certified_Products ;
+                     rdfs:comment "A Gold Standard Label is a type of Product that is Issued to a Project Developer but relates to the application of Gold Standard certification to a product issued by a third party. For example the application of Gold Standard Label to CERs."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Gold_Standard_NGO_Supporters
+:Gold_Standard_NGO_Supporters rdf:type owl:Class ;
+                              rdfs:subClassOf aia:LegalPerson ;
+                              rdfs:comment "Gold Standard was founded by a group of NGOs and continues to represent the interests of civil society in all our work. NGO Supporters can take an active role in the project development process, providing constructive feedback and offering their expertise. This lends further credibility to our local sustainable development initiatives. Every NGO that supports Gold Standard helps strengthen the collective statement that carbon markets should foster transparency, environmental rigor and sustainable development. http://www.goldstandard.org/our-story/who-we-are"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Gold_Standard_Technical_Advisory_Committee
+:Gold_Standard_Technical_Advisory_Committee rdf:type owl:Class ;
+                                            rdfs:subClassOf aia:LegalPerson ;
+                                            rdfs:comment "GS TAC is responsible for ensuring the rigor and integrity in all our work, proven existing programs and innovative new initiatives. The TAC is an independent body composed of market specialists that provide expertise, guidance and decisions."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Gold_Standard_Verified_Emissions_Reduction
+:Gold_Standard_Verified_Emissions_Reduction rdf:type owl:Class ;
+                                            rdfs:subClassOf aia:Claim ;
+                                            rdfs:comment "A Gold Standard issued Verified Emissions Reduction: a single unit (one tonne) of CO2 equivalent reduction captured as a carbon credit for use as a commodity within the voluntary carbon market."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Governance_and_Management_System
+:Governance_and_Management_System rdf:type owl:Class ;
+                                  rdfs:subClassOf aia:Control ;
+                                  rdfs:comment "System of governance and management applied by a project (see Gold Standard for Sustainable Urban Development)."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#High_Conservation_Value
+:High_Conservation_Value rdf:type owl:Class ;
+                         rdfs:subClassOf aia:Parameter ;
+                         rdfs:comment "A biological, ecological, social or cultural value of outstanding significance or critical importance."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#ISEAL
+:ISEAL rdf:type owl:Class ;
+       rdfs:subClassOf aia:LegalPerson ;
+       rdfs:comment "International Social and Environmental Accreditation and Labeling"@en ;
+       rdfs:seeAlso <https://www.isealalliance.org> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#ISO
+:ISO rdf:type owl:Class ;
+     rdfs:subClassOf aia:LegalPerson ;
+     rdfs:comment "International Standards Organisation"@en ;
+     rdfs:seeAlso <https://www.iso.org> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#IUCN
+:IUCN rdf:type owl:Class ;
+      rdfs:subClassOf aia:LegalPerson ;
+      rdfs:label "Internation Union for the Conservation of Nature"@en ;
+      rdfs:seeAlso <https://www.iucn.org> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Interested_Stakeholder
+:Interested_Stakeholder rdf:type owl:Class ;
+                        rdfs:subClassOf :Relevant_Stakeholders ;
+                        rdfs:comment "Any stakeholder who is interested (i.e. has expressed an interest) in the Project or its outcomes. They do not to be local or affected."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Issuance
+:Issuance rdf:type owl:Class ;
+          rdfs:subClassOf aia:Activity ;
+          rdfs:comment "The issue by Gold Standard of a Gold Standard Certified Impact Statement or Product (such as a GS VER). These are issued by Gold Standard following the successful completion of Performance Certification."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Justification_Information
+:Justification_Information rdf:type owl:Class ;
+                           rdfs:subClassOf aia:Claim ;
+                           rdfs:comment "Along with an Output Indicator the information that must be provided to support the SDG Contributions claimed by a project. The information must credibly demonstrate how the Output Indicator can be used to show a positive influence on one or more SDG Indicators."@en ,
+                                        "FIX: add object properties to aia to support the attachment of proof/verification to Claims"@en ;
+                           <http://www.w3.org/2004/02/skos/core#related> <http://purl.org/aiaontology/vcsvocabulary#Proof> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#KPI
+:KPI rdf:type owl:Class ;
+     rdfs:subClassOf aia:Control ;
+     rdfs:comment "A template that captures high level project details in the early stages of development. The Key Project Information is used to support Eligibility Check."@en ;
+     rdfs:label "Key Project Information"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Knowledge
+:Knowledge rdf:type owl:Class ;
+           rdfs:subClassOf aia:Resource ;
+           rdfs:comment "The theoretical and/or practical understanding of a subject."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#LDC
+:LDC rdf:type owl:Class ;
+     rdfs:subClassOf aia:Location ;
+     rdfs:comment "The Least Developed Countries (LDCs) is a list of the countries that, according to the United Nations, exhibit the lowest indicators of socioeconomic development, with the lowest Human Development Index ratings of all countries in the world."@en ;
+     rdfs:label "Least Developed Country"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#LEDs
+:LEDs rdf:type owl:Class ;
+      rdfs:subClassOf aia:Procedure ;
+      rdfs:label "Low Emission Development Strategies"@en ;
+      rdfs:seeAlso <http://ledsgp.org/?loclang=en_gb> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#LLDC
+:LLDC rdf:type owl:Class ;
+      rdfs:subClassOf :LDC ;
+      rdfs:label "Landlocked Least Developed Country"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Listed
+:Listed rdf:type owl:Class ;
+        rdfs:subClassOf aia:State ;
+        rdfs:comment "Listed is a Certification status that an activity may achieve through successful completion of the Preliminary Review."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Local_Stakeholder
+:Local_Stakeholder rdf:type owl:Class ;
+                   rdfs:subClassOf :Relevant_Stakeholders ;
+                   rdfs:comment "Stakeholders that reside or work within or in close proximity to the Project Area."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#MDGs
+:MDGs rdf:type owl:Class ;
+      rdfs:subClassOf aia:Objective ;
+      rdfs:comment "The eight International Development goals adopted by the United Nations, 2000. The Millennium Development Goals conclude as of 2015 and are replaced by the Sustainable Development Goals."@en ;
+      rdfs:label "Millenium Development Goals"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#MRV
+:MRV rdf:type owl:Class ;
+     rdfs:subClassOf aia:Procedure ;
+     rdfs:comment "System of collecting information, reporting and verifying that underpins Gold Standard for the Global Goals Principle 4 (Demonstration of Real Outcomes)"@en ;
+     rdfs:label "Monitoring, Reporting, and Verification"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Monitoring_Period
+:Monitoring_Period rdf:type owl:Class ;
+                   rdfs:subClassOf aia:Period ;
+                   rdfs:comment "The period of time for which a Monitoring Report covers and for which Verification and ultimately Certification is sought."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Monitoring_Report
+:Monitoring_Report rdf:type owl:Class ;
+                   rdfs:subClassOf aia:Claim ;
+                   rdfs:comment "A report submitted by the Project Developer in support of Verification. The Monitoring Report includes reports against the parameters set in the Monitoring Plan plus any re-assessment, change or stakeholder feedback received during the Monitoring Period."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Monitoring_and_Reporting_Plan
+:Monitoring_and_Reporting_Plan rdf:type owl:Class ;
+                               rdfs:subClassOf aia:Procedure ;
+                               rdfs:comment "An initial plan and subsequent ongoing monitoring that is based on the systematic collection of data on specified indicators to provide indications of the extent to which outcomes are being achieved."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#NAMA
+:NAMA rdf:type owl:Class ;
+      rdfs:subClassOf aia:Procedure ;
+      rdfs:comment "NAMAs refer to any action that reduces emissions in developing countries and is prepared under the umbrella of a national governmental initiative. They can be policies directed at transformational change within an economic sector, or actions across sectors for a broader national focus. NAMAs are supported and enabled by technology, financing, and capacity-building and are aimed at achieving a reduction in emissions relative to ‘business as usual’ emissions in 2020."@en ;
+      rdfs:label "National Appropriate Mitigation Action"@en ;
+      rdfs:seeAlso <http://www4.unfccc.int/sites/nama/SitePages/Home.aspx> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#NDC
+:NDC rdf:type owl:Class ;
+     rdfs:subClassOf aia:Control ;
+     rdfs:comment "According to Article 4 paragraph 2 of the Paris Agreement, each Party shall prepare, communicate and maintain successive nationally determined contributions (NDCs) that it intends to achieve. Parties shall pursue domestic mitigation measures, with the aim of achieving the objectives of such contributions."@en ;
+     rdfs:label "Nationally Determined Contribution"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#NDS
+:NDS rdf:type owl:Class ;
+     rdfs:subClassOf aia:Procedure ;
+     rdfs:label "National Development Strategy"@en ;
+     rdfs:seeAlso <http://www.un.org/en/development/desa/policynotes.html> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Non-Conformity
+:Non-Conformity rdf:type owl:Class ;
+                rdfs:subClassOf aia:Activity ;
+                rdfs:comment "Non-conformity is a nonfulfillment, lapse in fulfilment or failure to meet a Requirement."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#OFN
+:OFN rdf:type owl:Class ;
+     rdfs:subClassOf aia:Procedure ;
+     rdfs:comment "Tool to demonstrate the ongoing need for financial support resulting from Gold Standard Certification and Issued Claims and Products. The approach is applied at 5 year Registration Renewal."@en ;
+     <http://www.w3.org/2004/02/skos/core#altLabel> "Ongoing Financial Need"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Observation
+:Observation rdf:type owl:Class ;
+             rdfs:subClassOf aia:Claim ;
+             rdfs:comment "With an OBS, the VVB or The Gold Standard Secretariat provides an observation on possible future non-compliance with a requirement. Unlike CARs and FARs, observations are suggestions or warnings and do not need necessarily to be formally corrected. They are given special attention during the next certification."@en ;
+             <http://www.w3.org/2004/02/skos/core#altLabel> "OBS"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Online_Platform
+:Online_Platform rdf:type owl:Class ;
+                 rdfs:subClassOf aia:Resource ;
+                 rdfs:comment "Gold Standard aspires to build an online user interface to support the use of GS4GG. The written version of the standard will underpin the online platform. During development and road-testing it is likely that an offline version will be used with the online platform commencing later."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Output_Indicator
+:Output_Indicator rdf:type owl:Class ;
+                  rdfs:subClassOf aia:Indicator ;
+                  rdfs:comment "An indicator selected by the Project Developer, representing the tangible result of the Project. The indicator, along with the Justification Information and Quality Indicator and any Expert Stakeholder opinion is used to demonstrate SDG Contribution."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#PDD
+:PDD rdf:type owl:Class ;
+     rdfs:subClassOf :Project_Documentation ;
+     rdfs:comment "Document that includes all information concerning project design and how it conforms to the Gold Standard Requirements."@en ;
+     rdfs:label "Project Design Document"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#PER
+:PER rdf:type owl:Class ;
+     rdfs:subClassOf aia:Claim ;
+     rdfs:comment "A Planned Emission Reduction represents the expected (i.e., future) sequestration of 1 tonne of CO2e but does not represent an actual sequestration and accordingly shall not be used for carbon neutral claims until its conversion to a Verified Emission Reduction takes place."@en ;
+     rdfs:label "Planned Emissions Reduction"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Paris_Agreement
+:Paris_Agreement rdf:type owl:Class ;
+                 rdfs:subClassOf aia:Control ;
+                 rdfs:comment "The Paris Agreement (French: Accord de Paris), or Paris climate accord and Paris climate agreement, is an agreement within the United Nations Framework Convention on Climate Change (UNFCCC) dealing with greenhouse gas emissions mitigation, adaptation and finance starting in the year 2020."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Performance_Review
+:Performance_Review rdf:type owl:Class ;
+                    rdfs:subClassOf aia:Claim ;
+                    rdfs:comment "A review conducted by Gold Standard, TAC and NGO Supporters on the Monitoring Report and Verification Opinion. The result of the Review may lead to Certification, CARs/FARs/OBs being raised or rejection."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#PoA
+:PoA rdf:type owl:Class ;
+     rdfs:subClassOf aia:Activity ;
+     rdfs:label "A programme is a linked series of Projects submitted to Gold Standard. A set of related activities with a common objective submitted to Gold Standard."@en ,
+                "Program of Activities"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Preliminary_Review
+:Preliminary_Review rdf:type owl:Class ;
+                    rdfs:subClassOf aia:Audit ;
+                    rdfs:comment "Review conducted once at the outset (i.e. at an early stage of project design and before Listing on the GS Registry) of a Project. Part of the Activity Cycle where Gold Standard assesses the Project Information in order to check whether an activity and approach is likely to be eligible for Gold Standard Certification. This procedure, if successful leads to Listed status. The requirements for the Project Design Documentation to be submitted at this stage are detailed in the latest version of GS4GG Principles & Requirements"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Preventative_Action
+:Preventative_Action rdf:type owl:Class ;
+                     rdfs:subClassOf aia:Activity ;
+                     rdfs:comment "Action to prevent the occurrence of non-conformity(ies) or improve the effectiveness of its function."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Product_Requirements
+:Product_Requirements rdf:type owl:Class ;
+                      rdfs:subClassOf aia:Condition ;
+                      rdfs:comment "The rules and requirements applicable to a particular Gold Standard Product, for example VERs."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Project
+:Project rdf:type owl:Class ;
+         rdfs:subClassOf aia:Activity ;
+         rdfs:comment "The activity or action being implemented for which Gold Standard Certification is sought."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Project_Area
+:Project_Area rdf:type owl:Class ;
+              rdfs:subClassOf aia:Location ;
+              rdfs:comment "The Project Area is the physical spatial area or areas submitted for certification. It contains the area required to successfully manage the explicit objectives of the Project."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Project_Boundary
+:Project_Boundary rdf:type owl:Class ;
+                  rdfs:subClassOf aia:Location ;
+                  rdfs:comment "The clearly defined physical boundary or edges of the project that delineate the Project Area from non-Project Areas."@en ;
+                  <http://www.w3.org/2004/02/skos/core#related> <http://purl.org/aiaontology/cdmvocabulary#ProjectBoundary> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Project_Certification_Renewal
+:Project_Certification_Renewal rdf:type owl:Class ;
+                               rdfs:subClassOf aia:Process ;
+                               rdfs:comment "Project Certification Renewal is the process of Re-certifying with Gold Standard every 5 years. This process follows the Project Design Certification process but specifically focuses on any changes to the Project Design Documentation and an updated Baseline Scenario and a demonstration of Ongoing Financial Need. Certain project types have adjusted renewal requirements, for example automatic renewal for a number of cycles or reduced/enhanced demonstration requirements. These are captured in the specific Activity Requirements."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Project_Developer
+:Project_Developer rdf:type owl:Class ;
+                   rdfs:subClassOf aia:Role ;
+                   rdfs:comment "FIX: are these Roles or subclasses of Agent"@en ,
+                                """The person or entity that holds or is applying for certification and therefore responsible for demonstrating compliance with the requirements upon which Gold Standard certification is based.  The Project Developer shall be one individual or entity only.
+The developer and/or manager of the project."""@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Project_Documentation
+:Project_Documentation rdf:type owl:Class ;
+                       rdfs:subClassOf aia:Claim ;
+                       rdfs:comment "Umbrella term for all project design and monitoring documentation that demonstrates in detail how the Requirements are met. This can include Gold Standard Templates such as Project Design Documents and Monitoring Reports as well as Supporting Documents such as charts, maps or spreadsheets."@en ;
+                       <http://www.w3.org/2004/02/skos/core#related> <http://purl.org/aiaontology/vcsvocabulary#Proof> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Project_Participant
+:Project_Participant rdf:type owl:Class ;
+                     rdfs:subClassOf aia:Role ;
+                     rdfs:comment """A Project Participant is an individual or entity that is contributing to the generation of the certified impacts.
+
+Is any party or individual who is working closely with the Client to carry out the activities or who has provided written approval for a project. Activity participants shall be collectively represented by the Client or his Representative."""@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Project_Representative
+:Project_Representative rdf:type owl:Class ;
+                        rdfs:subClassOf aia:Role ;
+                        rdfs:comment "Refers to the person or entity that will serve as the focal point for the project. This representative will have sole or joint authority to communicate with the Gold Standard Secretariat regarding all matters related to a project’s certification, alteration or expansion. The project representative can be more than one individual or entity."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Project_Scenario
+:Project_Scenario rdf:type owl:Class ;
+                  rdfs:subClassOf aia:State ;
+                  rdfs:comment "The Project Scenario is defined as the scenario that will exist once the Project is implemented and operational."@en ;
+                  owl:equivalentClass <http://purl.org/aiaontology/cdmvocabulary#ProjectScenario> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Quality_Indicator
+:Quality_Indicator rdf:type owl:Class ;
+                   rdfs:subClassOf aia:Indicator ;
+                   rdfs:comment "Information that is submitted with the Output Indicator and Justification Information that together can be used to demonstrate an SDG Contribution. The Quality Indicator is specifically used in to build upon the Output Indicator which quantifies the results by adding information on the quality of the result."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#REC
+:REC rdf:type owl:Class ;
+     rdfs:subClassOf aia:Claim ;
+     rdfs:comment "Renewable Energy Certificates are tradable, non-tangible energy commodities that represent proof that 1 megawatt-hour (MWh) of electricity was generated from an eligible renewable energy resource (renewable electricity) and was fed into the shared system of power lines which transport energy. Renewable Energy Certificates provide a mechanism for the purchase of renewable energy that is added to and pulled from the electrical grid."@en ;
+     rdfs:label "Renewable Energy Certificate"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#RSPO
+:RSPO rdf:type owl:Class ;
+      rdfs:subClassOf aia:LegalPerson ;
+      rdfs:comment "Roundtable for Sustainable Palm Oil"@en ;
+      rdfs:seeAlso <https://www.rspo.org> .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Relevant_Stakeholders
+:Relevant_Stakeholders rdf:type owl:Class ;
+                       rdfs:subClassOf aia:Agent ;
+                       rdfs:comment "The collective term for local, affected, interested and expert stakeholders."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Renewable_Energy
+:Renewable_Energy rdf:type owl:Class ;
+                  rdfs:subClassOf aia:Activity ;
+                  rdfs:comment "The generation of energy from clean, sustainable, renewable processes."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Requirements
+:Requirements rdf:type owl:Class ;
+              rdfs:comment "Elements (rules, procedures, guidelines) that the activity must conform to in order to proceed through Validation/Verification and ultimately Certification."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Risk
+:Risk rdf:type owl:Class ;
+      rdfs:subClassOf aia:Parameter ;
+      rdfs:comment "Actions taken to lessen the probability or negative consequences, or both, associated with a risk."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#SC
+:SC rdf:type owl:Class ;
+    rdfs:subClassOf aia:Activity ;
+    rdfs:comment "The process and requirements associated with carrying out stakeholder consultation as part of Principle 3, Stakeholder Inclusivity."@en ;
+    rdfs:label "Stakeholder Consultation"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#SDG_Impact
+:SDG_Impact rdf:type owl:Class ;
+            rdfs:subClassOf aia:Output ;
+            rdfs:comment "A direct, positive contribution to a Sustainable Development Goal generated by a Project."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#SFR
+:SFR rdf:type owl:Class ;
+     rdfs:subClassOf aia:Activity ;
+     rdfs:comment "An opportunity for Relevant Stakeholders to provide feedback about a project as part of the process towards fulfilling Principle 3 – Stakeholder Inclusivity."@en ;
+     rdfs:label "Stakeholder Feedback Round"@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Scale
+:Scale rdf:type owl:Class ;
+       rdfs:comment "The Scale of a project may refer to a variety of definitions for example areal extent, size of impact or units provided. Scale is not limited in Gold Standard for the Global Goals but is dealt with in the Activity Requirements, Methodologies and Product Requirements where specific definitions and requirements are included."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#Shapefile
+:Shapefile rdf:type owl:Class ;
+           rdfs:comment "A shapefile is a digital vector (non-topological) storage format for storing geometric location and associated attribute information. A shapefile can consist of points, lines or polygons."@en ;
+           <http://www.w3.org/2004/02/skos/core#related> aia:Location .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#VVB
+:VVB rdf:type owl:Class ;
+     rdfs:subClassOf aia:LegalPerson ;
+     rdfs:comment "A Gold Standard approved audit organisation appointed by and on behalf of the Project Developer to carry out an audit and assessment in order to provide a Validation or Verification Report to Gold Standard in order to ultimately support Certification or rejection."@en ;
+     rdfs:label "(Gold Standard) Validation and Verification Body"@en .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
