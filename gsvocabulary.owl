@@ -1,4 +1,4 @@
-@prefix : <http://purl.org/aiaontology/gsvocabulary> .
+@prefix : <http://purl.org/aiaontology/gsvocabulary#> .
 @prefix aia: <http://purl.org/aiaontology#> .
 @prefix cdmv: <http://purl.org/aiaontology/cdmvocabulary#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -8,7 +8,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vcsv: <http://purl.org/aiaontology/vcsvocabulary#> .
-@base <http://purl.org/aiaontology/gsvocabulary> .
+@base <http://purl.org/aiaontology/gsvocabulary#> .
 
 <http://purl.org/aiaontology/gsvocabulary> a owl:Ontology .
 
