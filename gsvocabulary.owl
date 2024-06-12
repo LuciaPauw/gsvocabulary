@@ -10,7 +10,8 @@
 @prefix vcsv: <http://purl.org/aiaontology/vcsvocabulary#> .
 @base <http://purl.org/aiaontology/gsvocabulary> .
 
-<http://purl.org/aiaontology/gsvocabulary> rdf:type owl:Ontology .
+<http://purl.org/aiaontology/gsvocabulary> rdf:type owl:Ontology ;
+                                            owl:imports <http://purl.org/aiaontology> .
 
 #################################################################
 #    Annotation properties
@@ -179,17 +180,11 @@ aia:hasUnitOfMeasure rdf:type owl:DatatypeProperty .
 #################################################################
 
 ###  http://purl.org/aiaontology#Activity
-aia:Activity rdf:type owl:Class ;
-             owl:disjointWith :NonConformity .
+aia:Activity rdf:type owl:Class .
 
 
 ###  http://purl.org/aiaontology#Agent
 aia:Agent rdf:type owl:Class .
-
-
-###  http://purl.org/aiaontology#Audit
-aia:Audit rdf:type owl:Class ;
-          rdfs:subClassOf aia:Activity .
 
 
 ###  http://purl.org/aiaontology#Auditor
@@ -205,12 +200,12 @@ aia:Auditor rdf:type owl:Class ;
 
 ###  http://purl.org/aiaontology#Claim
 aia:Claim rdf:type owl:Class ;
-          rdfs:subClassOf aia:Audit .
+          rdfs:subClassOf <http://purl.org/aiaontology#Audit(n)> .
 
 
 ###  http://purl.org/aiaontology#Condition
 aia:Condition rdf:type owl:Class ;
-              owl:equivalentClass :Requirements .
+              rdfs:comment "FIX: deprecated" .
 
 
 ###  http://purl.org/aiaontology#Control
@@ -274,6 +269,20 @@ aia:Role rdf:type owl:Class .
 aia:State rdf:type owl:Class .
 
 
+###  http://purl.org/aiaontology#Audit(n)
+<http://purl.org/aiaontology#Audit(n)> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://purl.org/aiaontology#Claim(n)> .
+
+
+###  http://purl.org/aiaontology#Claim(n)
+<http://purl.org/aiaontology#Claim(n)> rdf:type owl:Class .
+
+
+###  http://purl.org/aiaontology#Control(n)
+<http://purl.org/aiaontology#Control(n)> rdf:type owl:Class ;
+                                         owl:equivalentClass :Requirements .
+
+
 ###  http://purl.org/aiaontology/gsvocabulary#AffectedStakeholder
 :AffectedStakeholder rdf:type owl:Class ;
                      rdfs:subClassOf :RelevantStakeholders ;
@@ -289,7 +298,7 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#Assessment
 :Assessment rdf:type owl:Class ;
-            rdfs:subClassOf aia:Audit ;
+            rdfs:subClassOf <http://purl.org/aiaontology#Audit(n)> ;
             rdfs:comment "The combined process of audit, review and decision on a conformity within the requirements of a standard (part of Validation or Verification e.g. a Validation Assessment)."@en .
 
 
@@ -376,6 +385,7 @@ aia:State rdf:type owl:Class .
                                   owl:someValuesFrom aia:Condition
                                 ] ;
             rdfs:subClassOf aia:Activity ;
+            owl:disjointWith :NonConformity ;
             rdfs:comment "Conformity is defined as the fulfillment of a requirement."@en .
 
 
@@ -388,7 +398,8 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#CoordinatingAndManagingEntity
 :CoordinatingAndManagingEntity rdf:type owl:Class ;
                                rdfs:subClassOf aia:Agent ;
-                               rdfs:comment "Entity that communicates with the Gold Standard on all matters related to a PoA and associated activities, as nominated in the cover letters to be submitted for each one of the activities."@en ;
+                               rdfs:comment "Entity that communicates with the Gold Standard on all matters related to a Programme of Activities and associated activities, as nominated in the cover letters to be submitted for each one of the activities."@en ,
+                                            "FIX: isCMEOf & hasCME"@en ;
                                rdfs:label "Coordinating and Managing Entity"@en .
 
 
@@ -435,7 +446,9 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#EligibilityCheck
 :EligibilityCheck rdf:type owl:Class ;
-                  rdfs:subClassOf aia:Activity .
+                  rdfs:subClassOf aia:Activity ;
+                  rdfs:comment "Check project eligibility within the Principles & Requirements and the relevant Project Activity Requirements"@en ;
+                  rdfs:seeAlso <https://www.goldstandard.org/publications/certification-process-stepbystep> .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#EligibilityPrinciples
@@ -650,6 +663,12 @@ aia:State rdf:type owl:Class .
                            skos:altLabel "MDGs"@en .
 
 
+###  http://purl.org/aiaontology/gsvocabulary#MonitoringActivity
+:MonitoringActivity rdf:type owl:Class ;
+                    rdfs:subClassOf aia:Activity ;
+                    rdfs:comment "The activity of monitoring a Project according its approved Monitoring Plan with the goal of quantifying the impact of a Project Activity"@en .
+
+
 ###  http://purl.org/aiaontology/gsvocabulary#MonitoringAndReportingPlan
 :MonitoringAndReportingPlan rdf:type owl:Class ;
                             rdfs:subClassOf aia:Procedure ;
@@ -727,7 +746,7 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#PerformanceReview
 :PerformanceReview rdf:type owl:Class ;
-                   rdfs:subClassOf aia:Audit ;
+                   rdfs:subClassOf <http://purl.org/aiaontology#Audit(n)> ;
                    rdfs:comment "A review conducted by Gold Standard, Technical Advisory Committe (TAC) and NGO Supporters on the Monitoring Report and Verification Opinion. The result of the Review may lead to Certification, Corrective Action Requests/Forward Action Requests/Observations being raised, or rejection."@en .
 
 
@@ -741,7 +760,7 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#PreliminaryReview
 :PreliminaryReview rdf:type owl:Class ;
-                   rdfs:subClassOf aia:Audit ;
+                   rdfs:subClassOf <http://purl.org/aiaontology#Audit(n)> ;
                    rdfs:comment "Review conducted once at the outset (i.e. at an early stage of project design and before Listing on the GS Registry) of a Project. Part of the Activity Cycle where Gold Standard assesses the Project Information in order to check whether an activity and approach is likely to be eligible for Gold Standard Certification. This procedure, if successful leads to Listed status. The requirements for the Project Design Documentation to be submitted at this stage are detailed in the latest version of GS4GG Principles & Requirements"@en .
 
 
@@ -760,6 +779,7 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#ProgrammeOfActivities
 :ProgrammeOfActivities rdf:type owl:Class ;
                        rdfs:subClassOf aia:Activity ;
+                       rdfs:comment "FIX: characteristic: must have sub-activities; i.e. <program> containsCPA <project activity>+ inverse isActivityOf"@en ;
                        rdfs:label "A programme is a linked series of Projects submitted to Gold Standard. A set of related activities with a common objective submitted to Gold Standard."@en ,
                                   "Program of Activities"@en ;
                        skos:altLabel "PoA"@en .
@@ -769,6 +789,12 @@ aia:State rdf:type owl:Class .
 :Project rdf:type owl:Class ;
          rdfs:subClassOf aia:Activity ;
          rdfs:comment "The activity or action being implemented for which Gold Standard Certification is sought."@en .
+
+
+###  http://purl.org/aiaontology/gsvocabulary#ProjectActivity
+:ProjectActivity rdf:type owl:Class ;
+                 rdfs:subClassOf aia:Activity ;
+                 rdfs:comment "An activity implemented additional to the Baseline Scenario (i.e. that would not have happened anyway) and with the express goal of achieving those results for which certification is sought."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#ProjectArea
@@ -892,14 +918,16 @@ Any party or individual who is working closely with the Client to carry out the 
 ###  http://purl.org/aiaontology/gsvocabulary#StakeholderConsultation
 :StakeholderConsultation rdf:type owl:Class ;
                          rdfs:subClassOf aia:Activity ;
-                         rdfs:comment "The process and requirements associated with carrying out stakeholder consultation as part of Principle 3, Stakeholder Inclusivity."@en ;
+                         rdfs:comment "FIX: principle 3?"@en ,
+                                      "The process and requirements associated with carrying out stakeholder consultation as part of Principle 3, Stakeholder Inclusivity."@en ;
                          rdfs:label "Stakeholder Consultation"@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#StakeholderFeedbackRound
 :StakeholderFeedbackRound rdf:type owl:Class ;
-                          rdfs:subClassOf aia:Activity ;
-                          rdfs:comment "An opportunity for Relevant Stakeholders to provide feedback about a project as part of the process towards fulfilling Principle 3 – Stakeholder Inclusivity."@en ;
+                          rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> ;
+                          rdfs:comment "An opportunity for Relevant Stakeholders to provide feedback about a project as part of the process towards fulfilling Principle 3 – Stakeholder Inclusivity."@en ,
+                                       "Losweg: die geleentheid om StakeholderConsultation uit te voer"@en ;
                           rdfs:label "Stakeholder Feedback Round"@en .
 
 
@@ -969,7 +997,7 @@ Any party or individual who is working closely with the Client to carry out the 
 :InternationalStandardsOrganisation rdf:type owl:NamedIndividual ,
                                              aia:LegalPerson ;
                                     rdfs:label "International Standards Organisation"@en ;
-                                    rdfs:seeAlso <www.iso.org> ;
+                                    rdfs:seeAlso <http://purl.org/aiaontology/www.iso.org> ;
                                     skos:altLabel "ISO"@en .
 
 
@@ -977,7 +1005,7 @@ Any party or individual who is working closely with the Client to carry out the 
 :InternationalUnionForTheConservationOfNature rdf:type owl:NamedIndividual ,
                                                        aia:LegalPerson ;
                                               rdfs:comment "International Union for the Conservation of Nature"@en ;
-                                              rdfs:seeAlso <www.iucn.org> ;
+                                              rdfs:seeAlso <http://purl.org/aiaontology/www.iucn.org> ;
                                               skos:altLabel "IUCN"@en .
 
 
