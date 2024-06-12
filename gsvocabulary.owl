@@ -11,7 +11,9 @@
 @base <http://purl.org/aiaontology/gsvocabulary> .
 
 <http://purl.org/aiaontology/gsvocabulary> rdf:type owl:Ontology ;
-                                            owl:imports <http://purl.org/aiaontology> .
+                                            owl:imports <http://purl.org/aiaontology> ;
+                                            rdfs:comment "Terms and their definitions are drawn directly from the GS glossary at this source unless indicated otherwise."@en ;
+                                            rdfs:seeAlso <https://globalgoals.goldstandard.org/faqs-glossary/#> .
 
 #################################################################
 #    Annotation properties
