@@ -103,7 +103,6 @@ skos:related rdf:type owl:AnnotationProperty .
 ###  http://purl.org/aiaontology/gsvocabulary#fulfillsRequirement
 :fulfillsRequirement rdf:type owl:ObjectProperty ;
                      rdfs:domain aia:Activity ;
-                     rdfs:range aia:Condition ;
                      rdfs:comment "An Activity that fulfills some Requirement/Condition is defined as a Conformity. This is the criteria for an Activity to be considered a Conformity."@en .
 
 
@@ -207,11 +206,6 @@ aia:Auditor rdf:type owl:Class ;
 ###  http://purl.org/aiaontology#Claim
 aia:Claim rdf:type owl:Class ;
           rdfs:subClassOf <http://purl.org/aiaontology#Audit(n)> .
-
-
-###  http://purl.org/aiaontology#Condition
-aia:Condition rdf:type owl:Class ;
-              rdfs:comment "FIX: deprecated" .
 
 
 ###  http://purl.org/aiaontology#Control
@@ -373,7 +367,7 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#Competence
 :Competence rdf:type owl:Class ;
-            rdfs:subClassOf aia:Condition ;
+            rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> ;
             rdfs:comment "Ability to apply knowledge and skills in Gold Standard audit with a view to achieving intended results."@en ;
             rdfs:label "FIX: Condition: to be an Auditor, an Agent needs Competence. A Claim will need to be made (and verified!) as to their Competence."@en .
 
@@ -386,10 +380,6 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#Conformity
 :Conformity rdf:type owl:Class ;
-            owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty :fulfillsRequirement ;
-                                  owl:someValuesFrom aia:Condition
-                                ] ;
             rdfs:subClassOf aia:Activity ;
             owl:disjointWith :NonConformity ;
             skos:definition "Conformity is defined as the fulfillment of a requirement."@en .
@@ -397,7 +387,7 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#ConformityCriteria
 :ConformityCriteria rdf:type owl:Class ;
-                    rdfs:subClassOf aia:Condition ;
+                    rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> ;
                     rdfs:comment "A checklist and associated guidance for GS-VVBs for the Validation or Verification against Gold Standard for the Global Goals."@en .
 
 
@@ -411,7 +401,7 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#CorrectiveActionRequest
 :CorrectiveActionRequest rdf:type owl:Class ;
-                         rdfs:subClassOf aia:Condition ;
+                         rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> ;
                          rdfs:comment "With a CAR, the GS-VVB (Validation and Verification Body) or The Gold Standard requests appropriate action be taken to show conformity with a requirement. In order to achieve a successful certification, all CARs shall be formally closed."@en ;
                          rdfs:label "Corrective Action Request"@en ;
                          skos:altLabel "CAR"@en .
@@ -483,7 +473,7 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#ForwardActionRequest
 :ForwardActionRequest rdf:type owl:Class ;
-                      rdfs:subClassOf aia:Condition ;
+                      rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> ;
                       rdfs:comment "Forward Action Request: A Validation & Verification Body (VVB) or The Gold Standard Secretariat requests appropriate action be taken in the project to become fully compliant with a requirement. FARs are not raised for issues that are linked to the eligibility of a project under the WBC scheme, such as a financial needs assessment. A FAR will be issued where the impact of the infraction is: not material within the current certification, AND unusual or non-systematic, AND correctable in a specific timeframe of less than 1 year. FARs can be closed by The Gold Standard Secretariat or a GS-VVB."@en ;
                       rdfs:label "Forward Action Request"@en ;
                       skos:altLabel "FAR"@en .
@@ -778,7 +768,7 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#ProductRequirements
 :ProductRequirements rdf:type owl:Class ;
-                     rdfs:subClassOf aia:Condition ;
+                     rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> ;
                      rdfs:comment "The rules and requirements applicable to a particular Gold Standard Product, for example Verified Emissions Reductions."@en .
 
 
