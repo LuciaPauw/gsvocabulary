@@ -12,7 +12,7 @@
 
 <http://purl.org/aiaontology/gsvocabulary> rdf:type owl:Ontology ;
                                             owl:imports <http://purl.org/aiaontology> ;
-                                            rdfs:comment "Terms and their definitions are drawn directly from the GS glossary at this source unless indicated otherwise."@en ;
+                                            rdfs:comment "Terms and their definitions are drawn directly from the GS glossary at this source unless indicated otherwise. Definitions from this glossary are indicated by skos:definition; from other sources by rdfs:comment"@en ;
                                             rdfs:seeAlso <https://globalgoals.goldstandard.org/faqs-glossary/#> .
 
 #################################################################
@@ -33,6 +33,10 @@ owl:sameAs rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/2004/02/skos/core#altLabel
 skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#related
@@ -319,7 +323,7 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#AuditTeam
 :AuditTeam rdf:type owl:Class ;
            rdfs:subClassOf aia:Agent ;
-           rdfs:comment "One or more auditors conducting an assessment. An audit team may consist of only one person; in such cases, the person is expected to have all team competences and team leader competences."@en .
+           skos:definition "One or more auditors conducting an assessment. An audit team may consist of only one person; in such cases, the person is expected to have all team competences and team leader competences."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#BaselineScenario
@@ -331,9 +335,9 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#CDMProgrammeActivity
 :CDMProgrammeActivity rdf:type owl:Class ;
                       rdfs:subClassOf aia:Activity ;
-                      rdfs:comment "A CDM project activity under a programme of activities. A CPA is a single, or a set of interrelated measure(s), to reduce GHG emissions or result in net anthropogenic greenhouse gas removals by sinks, applied within a designated area defined in the baseline methodology."@en ;
                       rdfs:label "CDM Programme Activity"@en ;
-                      skos:altLabel "CPA"@en .
+                      skos:altLabel "CPA"@en ;
+                      skos:definition "A CDM project activity under a programme of activities. A CPA is a single, or a set of interrelated measure(s), to reduce GHG emissions or result in net anthropogenic greenhouse gas removals by sinks, applied within a designated area defined in the baseline methodology."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#Certification
@@ -363,8 +367,8 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#CommunityServiceActivity
 :CommunityServiceActivity rdf:type owl:Class ;
                           rdfs:subClassOf aia:Activity ;
-                          rdfs:comment "A Project type that entails provision of services to a community.  The Requirements for CSA are included in the Gold Standard Community Services Activity Requirements."@en ;
-                          rdfs:label "Community Service Activity"@en .
+                          rdfs:label "Community Service Activity"@en ;
+                          skos:definition "A Project type that entails provision of services to a community.  The Requirements for CSA are included in the Gold Standard Community Services Activity Requirements."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#Competence
@@ -388,7 +392,7 @@ aia:State rdf:type owl:Class .
                                 ] ;
             rdfs:subClassOf aia:Activity ;
             owl:disjointWith :NonConformity ;
-            rdfs:comment "Conformity is defined as the fulfillment of a requirement."@en .
+            skos:definition "Conformity is defined as the fulfillment of a requirement."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#ConformityCriteria
@@ -400,9 +404,9 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#CoordinatingAndManagingEntity
 :CoordinatingAndManagingEntity rdf:type owl:Class ;
                                rdfs:subClassOf aia:Agent ;
-                               rdfs:comment "Entity that communicates with the Gold Standard on all matters related to a Programme of Activities and associated activities, as nominated in the cover letters to be submitted for each one of the activities."@en ,
-                                            "FIX: isCMEOf & hasCME"@en ;
-                               rdfs:label "Coordinating and Managing Entity"@en .
+                               rdfs:comment "FIX: isCMEOf & hasCME"@en ;
+                               rdfs:label "Coordinating and Managing Entity"@en ;
+                               rdfs:seeAlso "Entity that communicates with the Gold Standard on all matters related to a Programme of Activities and associated activities, as nominated in the cover letters to be submitted for each one of the activities."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#CorrectiveActionRequest
@@ -449,7 +453,7 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#EligibilityCheck
 :EligibilityCheck rdf:type owl:Class ;
                   rdfs:subClassOf aia:Activity ;
-                  rdfs:comment "Check project eligibility within the Principles & Requirements and the relevant Project Activity Requirements"@en ;
+                  rdfs:comment "The activity of checking project eligibility within the Principles & Requirements and the relevant Project Activity Requirements"@en ;
                   rdfs:seeAlso <https://www.goldstandard.org/publications/certification-process-stepbystep> .
 
 
@@ -524,7 +528,7 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#GoldStandardCertifiedProject
 :GoldStandardCertifiedProject rdf:type owl:Class ;
                               rdfs:subClassOf :Project ;
-                              rdfs:comment "A Project that has successfully completed Design Certification and completed at least one Performance Certification successfully."@en .
+                              skos:definition "A Project that has successfully completed Design Certification and completed at least one Performance Certification successfully."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#GoldStandardCertifiedSDGImpacts
@@ -597,7 +601,7 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#Issuance
 :Issuance rdf:type owl:Class ;
           rdfs:subClassOf aia:Activity ;
-          rdfs:comment "The issue by Gold Standard of a Gold Standard Certified Impact Statement or Product (such as a Gold Standard Verified Emissions Reduction (GS VER)). These are issued by Gold Standard following the successful completion of Performance Certification."@en .
+          skos:definition "The issue by Gold Standard of a Gold Standard Certified Impact Statement or Product (such as a Gold Standard Verified Emissions Reduction (GS VER)). These are issued by Gold Standard following the successful completion of Performance Certification."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#JustificationInformation
@@ -717,7 +721,7 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#NonConformity
 :NonConformity rdf:type owl:Class ;
                rdfs:subClassOf aia:Activity ;
-               rdfs:comment "Non-conformity is a nonfulfillment, lapse in fulfilment or failure to meet a Requirement."@en .
+               skos:definition "Non-conformity is a nonfulfillment, lapse in fulfilment or failure to meet a Requirement."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#Observation
@@ -769,7 +773,7 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#PreventativeAction
 :PreventativeAction rdf:type owl:Class ;
                     rdfs:subClassOf aia:Activity ;
-                    rdfs:comment "Action to prevent the occurrence of non-conformity(ies) or improve the effectiveness of its function."@en .
+                    skos:definition "Action to prevent the occurrence of non-conformity(ies) or improve the effectiveness of its function."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#ProductRequirements
@@ -782,15 +786,15 @@ aia:State rdf:type owl:Class .
 :ProgrammeOfActivities rdf:type owl:Class ;
                        rdfs:subClassOf aia:Activity ;
                        rdfs:comment "FIX: characteristic: must have sub-activities; i.e. <program> containsCPA <project activity>+ inverse isActivityOf"@en ;
-                       rdfs:label "A programme is a linked series of Projects submitted to Gold Standard. A set of related activities with a common objective submitted to Gold Standard."@en ,
-                                  "Program of Activities"@en ;
-                       skos:altLabel "PoA"@en .
+                       rdfs:label "Program of Activities"@en ;
+                       skos:altLabel "PoA"@en ;
+                       skos:definition "A programme is a linked series of Projects submitted to Gold Standard. A set of related activities with a common objective submitted to Gold Standard."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#Project
 :Project rdf:type owl:Class ;
          rdfs:subClassOf aia:Activity ;
-         rdfs:comment "The activity or action being implemented for which Gold Standard Certification is sought."@en .
+         skos:definition "The activity or action being implemented for which Gold Standard Certification is sought."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#ProjectActivity
@@ -920,9 +924,9 @@ Any party or individual who is working closely with the Client to carry out the 
 ###  http://purl.org/aiaontology/gsvocabulary#StakeholderConsultation
 :StakeholderConsultation rdf:type owl:Class ;
                          rdfs:subClassOf aia:Activity ;
-                         rdfs:comment "FIX: principle 3?"@en ,
-                                      "The process and requirements associated with carrying out stakeholder consultation as part of Principle 3, Stakeholder Inclusivity."@en ;
-                         rdfs:label "Stakeholder Consultation"@en .
+                         rdfs:label "Stakeholder Consultation"@en ;
+                         rdfs:seeAlso <https://www.ofenmacher.org/files/1914/2331/2357/The-Gold-Standard-Principles-FINAL-270513.pdf> ;
+                         skos:definition "The process and requirements associated with carrying out stakeholder consultation as part of Principle 3, Stakeholder Inclusivity."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#StakeholderFeedbackRound
