@@ -5,5 +5,7 @@
     <uri id="Imports Wizard Entry" name="http://purl.org/aiaontology" uri="file:/Users/lucia/nova/ca2sig/CA2-SIG-StandardsWG/Schemas/OWL/Ontology-ImpactAccounting.ttl.owl"/>
     <uri id="Imports Wizard Entry" name="http://purl.org/aiaontology" uri="file:/Users/lucia/nova/ca2sig/aiaontology/aia.owl"/>
     <uri id="Imports Wizard Entry" name="http://purl.org/aiaontology" uri="file:/Users/lucia/nova/ca2sig/aiaontology/aia.owl"/>
-    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1718264193859" name="http://purl.org/aiaontology/gsvocabulary" uri="gsvocabulary.owl"/>
+    </group>
 </catalog>

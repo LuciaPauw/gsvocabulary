@@ -12,7 +12,7 @@
 
 <http://purl.org/aiaontology/gsvocabulary> rdf:type owl:Ontology ;
                                             owl:imports <http://purl.org/aiaontology> ;
-                                            <http://purl.org/dc/terms/description> "This vocabulary integrates common glossary terms related to Gold Standard-compliant climate action projects with the aia ontology for (general) anthropogenic impact accounting. You can find more about the aia-o <a href=\"http://purl.org/aiaontology\">here</a>."@en ;
+                                            <http://purl.org/dc/terms/description> "This vocabulary integrates common glossary terms related to Gold Standard-compliant climate action projects with the aia ontology for (general) anthropogenic impact accounting. You can find more about the aia-o <a href=\"https://wiki.hyperledger.org/display/CASIG/An+ontology+for+anthropogenic+impact+accounting\">here</a>."@en ;
                                             <http://purl.org/dc/terms/source> <https://globalgoals.goldstandard.org/faqs-glossary/#> ;
                                             <http://purl.org/dc/terms/title> "Gold Standard Vocabulary"@en ;
                                             rdfs:comment "Terms and their definitions are drawn directly from the GS glossary at this source unless indicated otherwise. Definitions from this glossary are indicated by skos:definition; from other sources by rdfs:comment"@en .
@@ -69,6 +69,10 @@ skos:related rdf:type owl:AnnotationProperty .
       rdfs:comment "Mega-Watt Thermal"@en .
 
 
+###  http://purl.org/aiaontology/gsvocabulary#TRUE
+:TRUE rdf:type rdfs:Datatype .
+
+
 ###  http://purl.org/aiaontology/gsvocabulary#kW
 :kW rdf:type rdfs:Datatype ;
     rdfs:comment "Kilo-Watt"@en .
@@ -104,8 +108,8 @@ skos:related rdf:type owl:AnnotationProperty .
 
 ###  http://purl.org/aiaontology/gsvocabulary#fulfillsRequirement
 :fulfillsRequirement rdf:type owl:ObjectProperty ;
-                     rdfs:domain aia:Activity ;
-                     rdfs:comment "An Activity that fulfills some Requirement/Condition is defined as a Conformity. This is the criteria for an Activity to be considered a Conformity."@en .
+                     rdfs:domain owl:Thing ;
+                     rdfs:range <http://purl.org/aiaontology#Control(n)> .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#givenInFeedbackRound
@@ -201,8 +205,8 @@ aia:Auditor rdf:type owl:Class ;
                                   owl:allValuesFrom xsd:boolean
                                 ] ;
             rdfs:subClassOf aia:Role ;
-            rdfs:comment "Person who carries out the audit"@en ;
-            rdfs:label "FIX condition so that the value for isCompotent can be only TRUE"@en .
+            rdfs:comment "FIX condition so that the value for isCompotent can be only TRUE"@en ,
+                         "Person who carries out the audit"@en .
 
 
 ###  http://purl.org/aiaontology#Claim
@@ -288,7 +292,7 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#AffectedStakeholder
 :AffectedStakeholder rdf:type owl:Class ;
                      rdfs:subClassOf :RelevantStakeholders ;
-                     rdfs:comment "Any stakeholder affected physically, socially or economically by the implementation of the Project. Note that affected stakeholders may be outside the Project Area and in some cases be a distance beyond the Project Boundary."@en .
+                     skos:definition "Any stakeholder affected physically, socially or economically by the implementation of the Project. Note that affected stakeholders may be outside the Project Area and in some cases be a distance beyond the Project Boundary."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#AnnualReport
@@ -300,13 +304,14 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#Assessment
 :Assessment rdf:type owl:Class ;
-            rdfs:subClassOf <http://purl.org/aiaontology#Audit(n)> ;
-            rdfs:comment "The combined process of audit, review and decision on a conformity within the requirements of a standard (part of Validation or Verification e.g. a Validation Assessment)."@en .
+            rdfs:subClassOf aia:Activity ;
+            rdfs:comment "TODO: correct taxonomy for activity > verify > audit"@en ;
+            skos:definition "The combined process of audit, review and decision on a conformity within the requirements of a standard (part of Validation or Verification e.g. a Validation Assessment)."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#Assurance
 :Assurance rdf:type owl:Class ;
-           rdfs:subClassOf aia:Claim ;
+           rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> ;
            rdfs:comment "Demonstrable evidence that specified requirements related to an activity are fulfilled."@en ;
            skos:related vcsv:Proof .
 
@@ -338,8 +343,8 @@ aia:State rdf:type owl:Class .
 
 ###  http://purl.org/aiaontology/gsvocabulary#Certification
 :Certification rdf:type owl:Class ;
-               rdfs:subClassOf aia:Claim ;
-               rdfs:comment "FIX: possible syntax: Certification used as proof in aia:Audit, which is used to verify a Claim"@en ,
+               rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> ;
+               rdfs:comment "TODO: certification is the control we use for fulfillsRequirement"@en ,
                             "The written assurance confirmation/communication that fulfilment of specified requirements has been demonstrated (Adapted from ISO 17000)."@en .
 
 
@@ -348,7 +353,7 @@ aia:State rdf:type owl:Class .
                              rdfs:subClassOf aia:Claim ;
                              rdfs:comment "A carbon credit is a specific aia:Claim, namely, the claim to be responsible for the environmental benefit equal to one carbon credit."@en ,
                                           "Certified Emissions Reduction: a carbon credit, issued by another third party standard (typically UNFCCC CDM) for use in the compliance carbon markets.  A Gold Standard labelled CER is known as a GS-CER."@en ;
-                             skos:altLabel "CES"@en ,
+                             skos:altLabel "CER"@en ,
                                            "GS-CER"@en .
 
 
@@ -365,13 +370,6 @@ aia:State rdf:type owl:Class .
                           rdfs:subClassOf aia:Activity ;
                           rdfs:label "Community Service Activity"@en ;
                           skos:definition "A Project type that entails provision of services to a community.  The Requirements for CSA are included in the Gold Standard Community Services Activity Requirements."@en .
-
-
-###  http://purl.org/aiaontology/gsvocabulary#Competence
-:Competence rdf:type owl:Class ;
-            rdfs:subClassOf <http://purl.org/aiaontology#Control(n)> ;
-            rdfs:comment "Ability to apply knowledge and skills in Gold Standard audit with a view to achieving intended results."@en ;
-            rdfs:label "FIX: Condition: to be an Auditor, an Agent needs Competence. A Claim will need to be made (and verified!) as to their Competence."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#Complaints
@@ -424,9 +422,9 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#DesignatedNationalAuthority
 :DesignatedNationalAuthority rdf:type owl:Class ;
                              rdfs:subClassOf aia:LegalPerson ;
-                             rdfs:comment "A designated national authority (DNA) is the organization granted responsibility by a Party to authorise and approve participation in CDM projects."@en ;
                              rdfs:label "Designated National Authority"@en ;
-                             skos:altLabel "DNA"@en .
+                             skos:altLabel "DNA"@en ;
+                             skos:definition "A designated national authority (DNA) is the organization granted responsibility by a Party to authorise and approve participation in CDM projects."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#DesignatedOperationalEntity
@@ -465,8 +463,8 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#ExpertStakeholder
 :ExpertStakeholder rdf:type owl:Class ;
                    rdfs:subClassOf :RelevantStakeholders ;
-                   rdfs:comment "Expert Stakeholders are individuals that hold specific expertise or knowledge about the organization, process, or activity being audited and/or about the context and practices to which the project is applied. For the purposes of this Standard a Stakeholder is considered an expert if they hold over 10 years of relevant, contextually specific professional, academic or practical experience in a given topic. Higher academic qualifications are preferred but can be justified as not required if necessary."@en ,
-                                "TODO: add constraint - an expert stakeholder should have 10+ years of experience etc. per the definition above"@en .
+                   rdfs:comment "TODO: add constraint - an expert stakeholder should have 10+ years of experience etc. per the definition above"@en ;
+                   skos:definition "Expert Stakeholders are individuals that hold specific expertise or knowledge about the organization, process, or activity being audited and/or about the context and practices to which the project is applied. For the purposes of this Standard a Stakeholder is considered an expert if they hold over 10 years of relevant, contextually specific professional, academic or practical experience in a given topic. Higher academic qualifications are preferred but can be justified as not required if necessary."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#Feedback
@@ -532,8 +530,8 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#GoldStandardNGOSupporters
 :GoldStandardNGOSupporters rdf:type owl:Class ;
                            rdfs:subClassOf aia:LegalPerson ;
-                           rdfs:comment "Gold Standard was founded by a group of NGOs and continues to represent the interests of civil society in all our work. NGO Supporters can take an active role in the project development process, providing constructive feedback and offering their expertise. This lends further credibility to our local sustainable development initiatives. Every NGO that supports Gold Standard helps strengthen the collective statement that carbon markets should foster transparency, environmental rigor and sustainable development."@en ;
-                           rdfs:seeAlso <http://www.goldstandard.org/our-story/who-we-are> .
+                           rdfs:seeAlso <http://www.goldstandard.org/our-story/who-we-are> ;
+                           skos:definition "Gold Standard was founded by a group of NGOs and continues to represent the interests of civil society in all our work. NGO Supporters can take an active role in the project development process, providing constructive feedback and offering their expertise. This lends further credibility to our local sustainable development initiatives. Every NGO that supports Gold Standard helps strengthen the collective statement that carbon markets should foster transparency, environmental rigor and sustainable development."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#GoldStandardVerifiedEmissionsReduction
@@ -587,7 +585,7 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#InterestedStakeholder
 :InterestedStakeholder rdf:type owl:Class ;
                        rdfs:subClassOf :RelevantStakeholders ;
-                       rdfs:comment "Any stakeholder who is interested (i.e. has expressed an interest) in the Project or its outcomes. They do not to be local or affected."@en .
+                       skos:definition "Any stakeholder who is interested (i.e. has expressed an interest) in the Project or its outcomes. They do not to be local or affected."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#Issuance
@@ -642,7 +640,7 @@ aia:State rdf:type owl:Class .
 ###  http://purl.org/aiaontology/gsvocabulary#LocalStakeholder
 :LocalStakeholder rdf:type owl:Class ;
                   rdfs:subClassOf :RelevantStakeholders ;
-                  rdfs:comment "Stakeholders that reside or work within or in close proximity to the Project Area."@en .
+                  skos:definition "Stakeholders that reside or work within or in close proximity to the Project Area."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#LowEmissionDevelopmentStrategies
@@ -866,7 +864,9 @@ Any party or individual who is working closely with the Client to carry out the 
 ###  http://purl.org/aiaontology/gsvocabulary#RelevantStakeholders
 :RelevantStakeholders rdf:type owl:Class ;
                       rdfs:subClassOf aia:Agent ;
-                      rdfs:comment "The collective term for local, affected, interested and expert stakeholders."@en .
+                      rdfs:comment """TODO: generic property like fulfillsRoleRequirement
+Can refine later if needed, e.g. elaborate on what requirements there are to fulfill the requirement to be an stakeholder etc."""@en ;
+                      skos:definition "The collective term for local, affected, interested and expert stakeholders."@en .
 
 
 ###  http://purl.org/aiaontology/gsvocabulary#RenewableEnergy
@@ -932,9 +932,9 @@ Any party or individual who is working closely with the Client to carry out the 
 ###  http://purl.org/aiaontology/gsvocabulary#ValidationAndVerificationBody
 :ValidationAndVerificationBody rdf:type owl:Class ;
                                rdfs:subClassOf aia:LegalPerson ;
-                               rdfs:comment "A Gold Standard approved audit organisation appointed by and on behalf of the Project Developer to carry out an audit and assessment in order to provide a Validation or Verification Report to Gold Standard in order to ultimately support Certification or rejection."@en ;
                                rdfs:label "(Gold Standard) Validation and Verification Body"@en ;
-                               skos:altLabel "VVB"@en .
+                               skos:altLabel "VVB"@en ;
+                               skos:definition "A Gold Standard approved audit organisation appointed by and on behalf of the Project Developer to carry out an audit and assessment in order to provide a Validation or Verification Report to Gold Standard in order to ultimately support Certification or rejection."@en .
 
 
 #################################################################
