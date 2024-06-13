@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://purl.org/aiaontology" uri="file:/Users/lucia/nova/ca2sig/aiaontology/aia.owl"/>
+    <uri id="Imports Wizard Entry" name="https://github.com/aartum/CA2-SIG-StandardsWG/tree/main/Schemas/OWL" uri="file:/Users/lucia/nova/ca2sig/aiaontology/aia.owl"/>
+    <uri id="Imports Wizard Entry" name="http://purl.org/aiaontology" uri="file:/Users/lucia/nova/ca2sig/CA2-SIG-StandardsWG/Schemas/OWL/Ontology-ImpactAccounting.ttl.owl"/>
+    <uri id="Imports Wizard Entry" name="http://purl.org/aiaontology" uri="file:/Users/lucia/nova/ca2sig/aiaontology/aia.owl"/>
+    <uri id="Imports Wizard Entry" name="http://purl.org/aiaontology" uri="file:/Users/lucia/nova/ca2sig/aiaontology/aia.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
+</catalog>
